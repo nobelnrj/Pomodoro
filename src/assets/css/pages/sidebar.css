@@ -1,0 +1,21 @@
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 70px;
+    height: 100vh;
+    background-color: rgb(88,61,114);
+    transition: width 1s ease;
+    font-family: Arial, Helvetica, sans-serif;
+    z-index: 1998;
+}
+.sidebar.expanded {
+    width: auto;
+}
+.logo {
+    color: #ffffff;
+    font-size: 16px;
+    display: block;
+    padding: 20px;
+    text-align: center;
+}

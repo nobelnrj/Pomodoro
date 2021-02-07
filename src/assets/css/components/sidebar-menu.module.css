@@ -1,0 +1,31 @@
+.sidebarMenu {
+    margin-bottom: 20px;
+}
+
+.sidebarMenuItem {
+    margin-bottom: 10px;
+}
+
+.sidebarMenuLink {
+    padding: 10px 20px;
+    display: block;
+    text-decoration: none !important;
+}
+
+.sidebarMenuLink:hover {
+    background-color: rgba(255,255,255,0.3);
+}
+
+.sidebarMenuLink svg {
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
+    margin-right: 10px;
+    fill: #ffffff;
+    color: #ffffff;
+}
+
+.sidebarMenuLinkText {
+    color: #ffffff;
+    text-decoration: none;
+}
