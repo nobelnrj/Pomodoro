@@ -25,7 +25,8 @@
 
 .pageContainer {
   margin-left: 70px;
-  margin-top: 70px;
+  margin-top: 50px;
+  padding: 20px;
 }
 
 @keyframes App-logo-spin {

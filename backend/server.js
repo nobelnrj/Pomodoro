@@ -1,12 +1,23 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const exercisesRouter = require('./routes/exercises');
-const usersRouter = require('./routes/users');
+const bodyParser = require("body-parser");
+const passport = require("passport");
+const projectsRouter = require('./routes/projects');
+const employeesRouter = require('./routes/employees');
 
 require('dotenv').config();
 
 const app = express();
+
+// Bodyparser middleware
+app.use(
+  bodyParser.urlencoded({
+    extended: false
+  })
+);
+app.use(bodyParser.json());
+
 const port = process.env.PORT || 5000;
 
 app.use(cors());
@@ -22,8 +33,13 @@ connection.once('open', () => {
   console.log("MongoDB database connection established successfully");
 });
 
-app.use('/exercises', exercisesRouter);
-app.use('/users', usersRouter);
+// Passport middleware
+app.use(passport.initialize());
+// Passport config
+require("./config/passport")(passport);
+
+app.use('/projects', projectsRouter);
+app.use('/employees', employeesRouter);
 
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);

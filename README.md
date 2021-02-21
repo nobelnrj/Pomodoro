@@ -1,7 +1,7 @@
-Code for MERN tutorial.
+Things that I followed to create this React Web app.
 
-Video Tutorial: https://www.youtube.com/watch?v=7CqJlxBYj-M
+Pomodoro: The Pomodoro Technique is a time management method developed by Francesco Cirillo in the late 1980s. The technique uses a timer to break down work into intervals, traditionally 25 minutes in length, separated by short breaks. https://en.wikipedia.org/wiki/Pomodoro_Technique
 
-Article Tutorial: https://medium.com/@beaucarnes/learn-the-mern-stack-by-building-an-exercise-tracker-mern-tutorial-59c13c1237a1
+MERN STACK Tutorial: https://medium.com/@beaucarnes/learn-the-mern-stack-by-building-an-exercise-tracker-mern-tutorial-59c13c1237a1
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Backend Login Authentication: https://blog.bitsrc.io/build-a-login-auth-app-with-mern-stack-part-1-c405048e3669

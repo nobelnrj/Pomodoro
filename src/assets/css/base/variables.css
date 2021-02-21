@@ -1,0 +1,9 @@
+:root {
+    --header-font: Arial, Helvetica, sans-serif;
+    --brand-color: rgb(88,61,114);
+
+    /* Animated Book variables */
+    --animatedBook-font: 'Ballet', cursive;
+    --animatedBook-font-size: 36px;
+    --animatedBook-heading-color: #fff;
+}

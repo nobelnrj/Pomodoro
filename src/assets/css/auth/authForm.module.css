@@ -1,0 +1,11 @@
+.authInputWrapper {
+  border: solid 1px var(--brand-color);
+  border-radius: 4px;
+  margin-bottom: 10px;
+  width: 200px;
+}
+.authInputWrapper input {
+  border: none;
+  height: 100%;
+  outline: none;
+}

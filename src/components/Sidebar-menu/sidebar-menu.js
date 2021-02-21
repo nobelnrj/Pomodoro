@@ -6,9 +6,9 @@ import {ReactComponent as TasksIcon} from '../../assets/svg/tasks.svg';
 import styles from '../../assets/css/components/sidebar-menu.module.css';
 
 export default class SidebarMenu extends Component {
-    constructor(props) {
-        super(props);
-    }
+    // constructor(props) {
+    //     super(props);
+    // }
     render() {
         return (
             <ul className={styles.sidebarMenu}>
