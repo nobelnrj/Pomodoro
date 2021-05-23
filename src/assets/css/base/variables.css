@@ -1,6 +1,10 @@
 :root {
+    --color-white: #ffffff;
+    --color-black: #000;
+
     --header-font: Arial, Helvetica, sans-serif;
     --brand-color: rgb(88,61,114);
+    --body-color: #f1f5fc;
 
     /* Animated Book variables */
     --animatedBook-font: 'Ballet', cursive;

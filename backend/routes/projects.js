@@ -8,21 +8,30 @@ router.route('/').get((req, res) => {
 });
 
 router.route('/add').post((req, res) => {
-  const username = req.body.username;
+  const teamLead = req.body.teamLead;
+	const projectName = req.body.projectName;
   const description = req.body.description;
   const duration = Number(req.body.duration);
-  const date = Date.parse(req.body.date);
+  const projectType = req.body.projectType;
+	const colorCode = req.body.colorCode;
+	const projectStatus = req.body.projectStatus;
+	const startDate = Date.parse(req.body.startDate);
 
   const newExercise = new Project({
-    username,
-    description,
-    duration,
-    date,
-  });
+		teamLead,
+		projectName,
+		description,
+		duration,
+		projectType,
+		colorCode,
+		projectStatus,
+		startDate,
+	});
 
-  newExercise.save()
-  .then(() => res.json('Exercise added!'))
-  .catch(err => res.status(400).json('Error: ' + err));
+  newExercise
+		.save()
+		.then(() => res.json("Project added!"))
+		.catch((err) => res.status(400).json("Error: " + err));
 });
 
 router.route('/:id').get((req, res) => {
@@ -33,8 +42,8 @@ router.route('/:id').get((req, res) => {
 
 router.route('/:id').delete((req, res) => {
   Project.findByIdAndDelete(req.params.id)
-    .then(() => res.json('Exercise deleted.'))
-    .catch(err => res.status(400).json('Error: ' + err));
+		.then(() => res.json("Project deleted."))
+		.catch((err) => res.status(400).json("Error: " + err));
 });
 
 router.route('/update/:id').post((req, res) => {
@@ -45,9 +54,10 @@ router.route('/update/:id').post((req, res) => {
       exercise.duration = Number(req.body.duration);
       exercise.date = Date.parse(req.body.date);
 
-      exercise.save()
-        .then(() => res.json('Exercise updated!'))
-        .catch(err => res.status(400).json('Error: ' + err));
+      exercise
+				.save()
+				.then(() => res.json("Project updated!"))
+				.catch((err) => res.status(400).json("Error: " + err));
     })
     .catch(err => res.status(400).json('Error: ' + err));
 });

@@ -17,7 +17,7 @@ export default class SidebarMenu extends Component {
                         <TasksIcon />
                         {
                             this.props.expanded && (
-                                <span className={styles.sidebarMenuLinkText}>Tasks</span>
+                                <span className={styles.sidebarMenuLinkText}>Projects</span>
                             )
                         }
                     </Link>
@@ -27,7 +27,7 @@ export default class SidebarMenu extends Component {
                         <AddTaskIcon />
                         {
                             this.props.expanded && (
-                                <span className={styles.sidebarMenuLinkText}>Create Task</span>
+                                <span className={styles.sidebarMenuLinkText}>Create Project</span>
                             )
                         }
                     </Link>
@@ -37,7 +37,7 @@ export default class SidebarMenu extends Component {
                         <AddUserIcon />
                         {
                             this.props.expanded && (
-                                <span className={styles.sidebarMenuLinkText}>Create User</span>
+                                <span className={styles.sidebarMenuLinkText}>Create Employee</span>
                             )
                         }
                     </Link>

@@ -9,12 +9,12 @@ class RegisterForm extends Component {
   constructor() {
     super();
     this.state = {
-      name: "",
-      email: "",
-      password: "",
-      password2: "",
-      errors: {}
-    };
+			name: "",
+			email: "",
+			password: "",
+			password2: "",
+			errors: {},
+		};
   }
   componentWillReceiveProps(nextProps) {
     if (nextProps.errors) {

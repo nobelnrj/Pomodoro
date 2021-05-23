@@ -1,0 +1,16 @@
+.projectList {
+  padding: 30px;
+  border-radius: 30px;
+  background-color: var(--color-white);
+}
+
+.projectListHeading {
+  margin-bottom: 20px;
+}
+
+.projectListContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin-left: -20px;
+} 

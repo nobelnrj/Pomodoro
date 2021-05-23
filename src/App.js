@@ -1,7 +1,7 @@
 import React from 'react';
-import './App.css';
 import './assets/css/base/variables.css';
 import './assets/css/base/reset.css';
+import './App.css';
 import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./store/utils/setAuthToken";
@@ -12,7 +12,7 @@ import Navbar from "./parts/sidebar";
 import Header from "./parts/header";
 import Login from "./auth/login";
 import Register from  "./auth/register";
-import ExercisesList from "./pages/exercises-list";
+import ExercisesList from "./pages/project-list";
 import EditExercise from "./pages/edit-exercise";
 import CreateExercise from "./pages/create-exercise";
 import CreateUser from "./pages/create-user";

@@ -1,3 +1,5 @@
 export const GET_ERRORS = "GET_ERRORS";
 export const USER_LOADING = "USER_LOADING";
 export const SET_CURRENT_USER = "SET_CURRENT_USER";
+export const GET_PROJECTS = "GET_PROJECTS";
+export const REMOVE_PROJECT = "REMOVE_PROJECT";

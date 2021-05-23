@@ -24,17 +24,19 @@
 }
 
 .front, .back {
-  background: var(--brand-color);
+  background: url(../../images/bookCover.jpg);
+  /* background-position: center; */
+  background-size: contain;
 }
 
 .front, .page1, .page3, .page5 {
-  border-bottom-right-radius: .5em;
-  border-top-right-radius: .5em;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .back, .page2, .page4, .page6 {
-  border-bottom-right-radius: .5em;
-  border-top-right-radius: .5em;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .page1 { 

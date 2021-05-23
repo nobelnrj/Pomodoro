@@ -8,21 +8,11 @@ const keys = require("../config/keys");
 const validateRegisterInput = require("../validation/register");
 const validateLoginInput = require("../validation/login");
 
-// router.route('/').get((req, res) => {
-//   Employee.find()
-//     .then(users => res.json(users))
-//     .catch(err => res.status(400).json('Error: ' + err));
-// });
-
-// router.route('/add').post((req, res) => {
-//   const username = req.body.username;
-
-//   const newUser = new Employee({username});
-
-//   newUser.save()
-//     .then(() => res.json('User added!'))
-//     .catch(err => res.status(400).json('Error: ' + err));
-// });
+router.route("/").get((req, res) => {
+	Employee.find()
+		.then((employees) => res.json(employees))
+		.catch((err) => res.status(400).json("Error: " + err));
+});
 
 router.post("/register", (req, res) => {
   // Form validation

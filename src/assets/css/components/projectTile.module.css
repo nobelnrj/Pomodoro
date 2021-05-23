@@ -1,0 +1,161 @@
+.container {
+  background-color: transparent;
+  width: 250px;
+  padding: 15px 0;
+  border-radius: 30px;
+  margin-left: 20px;
+  margin-bottom: 30px;
+  position: relative;
+  box-shadow: 0px 0px 40px 2px #ccc;
+}
+
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  border-radius: 30px;
+}
+
+.header {
+  padding: 0 15px;
+  margin-bottom: 20px;
+  display: flex;
+  position: relative;
+  z-index: 1;
+}
+
+.startDate {
+  font-size: 14px;
+  color: #525050;
+}
+
+.content {
+  padding: 0 15px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.name {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 7px;
+}
+
+.type {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.lead {
+  font-size: 14px;
+  color: #525050;
+  margin-bottom: 10px;
+}
+
+.footer {
+  padding: 0 15px;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.dayCount {
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 14px;
+  background-color: var(--color-white);
+  font-weight: 500;
+}
+
+.actionTrigger {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  z-index: 101;
+  background-color: transparent;
+  border: none;
+  width: 20px;
+  height: 14px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.actionTrigger::before, .actionTrigger::after {
+  content: '';
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background-color: var(--color-black);
+  border-radius: 50%;
+}
+
+.actionTrigger::before {
+  top: 0;
+}
+
+.actionTrigger::after {
+  bottom: 0;
+}
+
+.actionTriggerOpen {
+  width: 20px;
+  height: 20px;
+}
+
+.actionTriggerOpen::before {
+  width: 2px;
+  height: 20px;
+  right: 7px;
+  top: 0;
+  transform: rotate(45deg);
+}
+
+.actionTriggerOpen::after {
+  width: 2px;
+  height: 20px;
+  right: 7px;
+  top: 0;
+  transform: rotate(-45deg);
+}
+
+.actionWrapper {
+  position: absolute;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  border-radius: 30px;
+}
+
+.actionWrapperOpen {
+  display: flex;
+}
+
+.actionButton {
+  border: none;
+  background-color: var(--color-white);
+  padding: 10px 0;
+  border-radius: 40px;
+  text-transform: uppercase;
+  text-decoration: none;
+  margin-bottom: 10px;
+  width: 120px;
+  text-align: center;
+  display: inline-block;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.actionButton:last-child {
+  margin-bottom: 0px;
+}
