@@ -1,8 +1,5 @@
-import {
-    SET_CURRENT_USER,
-    USER_LOADING
-  } from "../actions/types";
-  const isEmpty = require("is-empty");
+import { SET_CURRENT_USER, USER_LOADING } from "../actions/types";
+  import isEmpty from "lodash/isEmpty";
   const initialState = {
     isAuthenticated: false,
     user: {},

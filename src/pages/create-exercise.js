@@ -1,220 +1,161 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import DatePicker from 'react-datepicker';
-import "react-datepicker/dist/react-datepicker.css";
+import PropTypes from "prop-types";
+import axios from "axios";
+import DatePicker from "react-datepicker";
+// import "react-datepicker/dist/react-datepicker.css";
+import Field from "../components/FormElements/Field";
+import Form from "../components/FormElements/Form";
+import authForm from "../assets/css/auth/authForm.module.css";
+import { connect } from "react-redux";
+import { getEmployees } from "../store/actions/employees/action";
+import { withRouter } from "react-router-dom";
 
-export default class CreateExercise extends Component {
+class CreateExercise extends Component {
 	constructor(props) {
 		super(props);
-
-		this.onChangeUsername = this.onChangeUsername.bind(this);
-    this.onChangeDescription = this.onChangeDescription.bind(this);
-    this.onChangeProjectname = this.onChangeProjectname.bind(this);
-		this.onChangeDuration = this.onChangeDuration.bind(this);
-    this.onChangeProjectType = this.onChangeProjectType.bind(this);
-    this.onChangeColorCode = this.onChangeColorCode.bind(this);
-    this.onChangeProjectStatus = this.onChangeProjectStatus.bind(this);
-		this.onChangeDate = this.onChangeDate.bind(this);
 		this.onSubmit = this.onSubmit.bind(this);
+		this.onChangeDate = this.onChangeDate.bind(this);
 
 		this.state = {
-			teamLead: "",
-			projectName: "",
-			description: "",
-			duration: 0,
-			projectType: "",
-			colorCode: "",
-			projectStatus: "",
-			date: new Date(),
-			users: [],
+			value: {
+				teamLead: "",
+				colorCode: "",
+				description: "",
+				duration: "",
+				projectName: "",
+				projectStatus: "",
+				projectType: "",
+				startDate: new Date(),
+			},
 		};
 	}
 
 	componentDidMount() {
-		axios
-			.get("http://localhost:5000/employees/")
-			.then((response) => {
-				if (response.data.length > 0) {
-					console.log(response.data);
-					this.setState({
-						users: response.data.map((user) => user.username),
-						teamLead: response.data[0].username,
-					});
-				}
-			})
-			.catch((error) => {
-				console.log(error);
+		this.props.getEmployees();
+	}
+
+	componentWillReceiveProps(nextProps) {
+		console.log(nextProps);
+		if (nextProps.employees) {
+			this.setState({
+				projects: nextProps.employees,
 			});
+		}
+		console.log(nextProps.employees);
 	}
-
-	onChangeUsername(e) {
-		this.setState({
-			teamLead: e.target.value,
-		});
-	}
-
-	onChangeProjectname(e) {
-		this.setState({
-			projectName: e.target.value,
-		});
-	}
-
-	onChangeDescription(e) {
-		this.setState({
-			description: e.target.value,
-		});
-	}
-
-	onChangeDuration(e) {
-		this.setState({
-			duration: e.target.value,
-		});
-	}
-
-	onChangeProjectType(e) {
-		this.setState({
-			projectType: e.target.value,
-		});
-	}
-
-	onChangeColorCode(e) {
-		this.setState({
-			colorCode: e.target.value,
-		});
-	}
-
-  onChangeProjectStatus(e) {
-    this.setState({
-			projectStatus: e.target.value,
-		});
-  }
 
 	onChangeDate(date) {
-		this.setState({
-			date: date,
-		});
+		this.setState({});
 	}
 
-	onSubmit(e) {
-		e.preventDefault();
-
+	onSubmit() {
+		console.log(this.state);
 		const project = {
-			teamLead: this.state.teamLead,
-			projectName: this.state.projectName,
-			description: this.state.description,
-			duration: this.state.duration,
-			projectType: this.state.projectType,
-			colorCode: this.state.colorCode,
-			projectStatus: this.state.projectStatus,
-			startDate: this.state.date,
+			teamLead: this.state.value.teamLead,
+			projectName: this.state.value.projectName,
+			description: this.state.value.description,
+			duration: this.state.value.duration,
+			projectType: this.state.value.projectType,
+			colorCode: this.state.value.colorCode,
+			projectStatus: this.state.value.projectStatus,
+			startDate: this.state.value.date,
 		};
 
 		console.log(project);
 
-		axios
-			.post("http://localhost:5000/projects/add", project)
-			.then((res) => console.log(res.data));
+		// axios
+		// 	.post("http://localhost:5000/projects/add", project)
+		// 	.then((res) => console.log(res.data));
 
-		window.location = "/";
+		// window.location = "/";
 	}
 
 	render() {
 		return (
-			<div>
-				<h3>Create New Exercise Log</h3>
-				<form onSubmit={this.onSubmit}>
-					<div className="form-group">
-						<label>Team Lead: </label>
-						<select
-							ref="userInput"
-							required
-							className="form-control"
-							value={this.state.teamLead}
-							onChange={this.onChangeUsername}>
-							{this.state.users.map(function (user) {
-								return (
-									<option key={user} value={user}>
-										{user}
-									</option>
-								);
-							})}
-						</select>
-					</div>
-					<div className="form-group">
-						<label>Project Name: </label>
-						<input
-							type="text"
-							required
-							className="form-control"
-							value={this.state.projectName}
-							onChange={this.onChangeProjectname}
+			<div className="wrapper-box">
+				<h3 className="wrapper-heading">Create New Exercise Log</h3>
+				<Form
+					state={this.state}
+					addSubmitButton={true}
+					onChange={(value) => this.setState({ value })}
+					onSubmit={this.onSubmit}
+					buttontext="Create Exercise">
+					<Field
+						type="text"
+						id="projectName"
+						className="something"
+						isRequired={true}
+						label="Project Name"
+						fieldName="projectName"
+					/>
+					<Field
+						type="text"
+						id="description"
+						className="something"
+						isRequired={true}
+						label="Description"
+						fieldName="description"
+					/>
+					<Field
+						type="text"
+						id="duration"
+						className="something"
+						isRequired={true}
+						label="Duration (in days)"
+						fieldName="duration"
+					/>
+					<Field
+						type="text"
+						id="projectType"
+						className="something"
+						isRequired={true}
+						label="Project Type"
+						fieldName="projectType"
+					/>
+					<Field
+						type="text"
+						id="colorCode"
+						className="something"
+						isRequired={true}
+						label="Color Code"
+						fieldName="colorCode"
+					/>
+					<Field
+						type="text"
+						id="projectStatus"
+						className="something"
+						isRequired={true}
+						label="Project Status"
+						fieldName="projectStatus"
+					/>
+					<div className={authForm.authInputWrapper}>
+						<DatePicker
+							className={authForm.formInput}
+							id="date-picker"
+							selected={this.state.value.startDate}
+							onChange={this.onChangeDate}
 						/>
+						<label
+							className={authForm.formLabel + " " + authForm.active}
+							htmlFor="date-picker">
+							Start Date
+						</label>
 					</div>
-					<div className="form-group">
-						<label>Description: </label>
-						<input
-							type="text"
-							required
-							className="form-control"
-							value={this.state.description}
-							onChange={this.onChangeDescription}
-						/>
-					</div>
-					<div className="form-group">
-						<label>Duration (in days): </label>
-						<input
-							type="text"
-							className="form-control"
-							value={this.state.duration}
-							onChange={this.onChangeDuration}
-						/>
-					</div>
-					<div className="form-group">
-						<label>Project Type: </label>
-						<input
-							type="text"
-							className="form-control"
-							value={this.state.projectType}
-							onChange={this.onChangeProjectType}
-						/>
-					</div>
-					<div className="form-group">
-						<label>Color Code: </label>
-						<input
-							type="text"
-							className="form-control"
-							value={this.state.colorCode}
-							onChange={this.onChangeColorCode}
-						/>
-					</div>
-					<div className="form-group">
-						<label>Project Status: </label>
-						<input
-							type="text"
-							className="form-control"
-							value={this.state.projectStatus}
-							onChange={this.onChangeProjectStatus}
-						/>
-					</div>
-					<div className="form-group">
-						<label>Date: </label>
-						<div>
-							<DatePicker
-								selected={this.state.date}
-								onChange={this.onChangeDate}
-							/>
-						</div>
-					</div>
-
-					<div className="form-group">
-						<input
-							type="submit"
-							value="Create Exercise Log"
-							className="btn btn-primary"
-						/>
-					</div>
-				</form>
+				</Form>
 			</div>
 		);
 	}
 }
+
+CreateExercise.propTypes = {
+	getEmployees: PropTypes.func.isRequired,
+	employees: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+	employees: state.employees,
+});
+
+export default withRouter(
+	connect(mapStateToProps, { getEmployees })(CreateExercise)
+);

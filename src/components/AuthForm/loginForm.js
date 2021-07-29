@@ -3,16 +3,15 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loginUser } from "../../store/actions/authActions";
 import authForm from "../../assets/css/auth/authForm.module.css";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
+import Field from "../FormElements/Field";
+import Form from "../FormElements/Form";
 
 class LoginForm extends Component {
 	constructor() {
 		super();
-    this.state = {
-      email: "",
-      password: "",
-      errors: {}
-    };
+		this.state = {
+		}
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -25,66 +24,37 @@ class LoginForm extends Component {
 			});
 		}
 	}
-	onChange = (e) => {
-		this.setState({ [e.target.id]: e.target.value });
-	};
-	onSubmit = (e) => {
-		e.preventDefault();
+	onSubmit = () => {
+		console.log(this.state);
 		const userData = {
-			email: this.state.email,
-			password: this.state.password,
+			email: this.state.value.email,
+			password: this.state.value.password,
 		};
 		this.props.loginUser(userData);
 		console.log(userData);
 	};
 
 	render() {
-		const { errors } = this.state;
 		return (
 			<div className={authForm.formWrapper}>
-				<form noValidate onSubmit={this.onSubmit}>
-					<div className={authForm.authInputWrapper}>
-						<input
-							onChange={this.onChange}
-							value={this.state.email}
-							error={errors.email}
-							className={authForm.formInput}
-							id="email"
-							type="email"
-						/>
-						<label className={authForm.formLabel} htmlFor="email">
-							Email
-						</label>
-						<span className={authForm.formError}>
-							{errors.email}
-							{errors.emailnotfound}
-						</span>
-					</div>
-					<div className={authForm.authInputWrapper}>
-						<input
-							onChange={this.onChange}
-							value={this.state.password}
-							error={errors.password}
-							className={authForm.formInput}
-							id="password"
-							type="password"
-						/>
-						<label className={authForm.formLabel} htmlFor="password">
-							Password
-						</label>
-						<span className={authForm.formError}>
-							{errors.password}
-							{errors.passwordincorrect}
-						</span>
-					</div>
-					<div className={authForm.formFooter}>
-						<button type="submit">Log In</button>
-						<div>
-							<span>New User? </span>
-							<Link to="/register">Create an account</Link>
-						</div>
-					</div>
-				</form>
+				<Form state={this.state} addSubmitButton={true} onChange={value => this.setState({ value })} onSubmit={this.onSubmit}>
+					<Field
+						type="email"
+						id="email"
+						className="something"
+						isRequired={true}
+						label="Email"
+						fieldName="email"
+					/>
+					<Field
+						type="password"
+						id="password"
+						className="something"
+						isRequired={true}
+						label="Password"
+						fieldName="password"
+					/>
+				</Form>
 			</div>
 		);
 	}

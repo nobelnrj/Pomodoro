@@ -4,8 +4,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getProjects, removeProject } from "../store/actions/projects/action";
-import axios from "axios";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import ProjectTile from "../components/Projects/ProjectTile";
 import style from "../assets/css/pages/projectList.module.css";
 

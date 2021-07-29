@@ -1,15 +1,16 @@
 import React from 'react';
 import './assets/css/base/variables.css';
 import './assets/css/base/reset.css';
-import './App.css';
-import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import "./assets/css/base/helper.css";
+import "./App.css";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./store/utils/setAuthToken";
 import { setCurrentUser, logoutUser } from "./store/actions/authActions";
 import store from "./store/store";
 
-import Navbar from "./parts/sidebar";
-import Header from "./parts/header";
+import Navbar from "./sections/sidebar";
+import Header from "./sections/header";
 import Login from "./auth/login";
 import Register from  "./auth/register";
 import ExercisesList from "./pages/project-list";

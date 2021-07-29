@@ -1,0 +1,91 @@
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 70px;
+    height: 100vh;
+    background-color: var(--body-color);
+    transition: width 0.5s ease, box-shadow 0.5s ease;
+    font-family: Arial, Helvetica, sans-serif;
+    z-index: 1998;
+}
+.sidebar.expanded {
+    width: 200px;
+    box-shadow: 0px 0px 5px 1px #9a9a9a;
+}
+.logo {
+    color: var(--color-black);
+    font-size: 16px;
+    display: block;
+    padding: 20px;
+    text-align: center;
+}
+
+.sidebarMenu {
+    margin: 20px 0;
+}
+
+.sidebarMenuItem {
+    margin-bottom: 10px;
+    padding: 0 7px;
+}
+
+.sidebarMenuLink {
+    padding: 10px 0 10px 15px;
+    padding-left: 15px;
+    display: flex;
+    align-items: center;
+    text-decoration: none !important;
+}
+
+.sidebarMenuLinkActive {
+    background-color: var(--color-black);
+    color: var(--color-white);
+    border-radius: 50px;
+}
+
+.sidebarMenuLink:hover {
+    background-color: var(--color-black);
+    color: var(--color-white);
+    border-radius: 50px;
+}
+
+.sidebarMenuLink svg {
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
+    margin-right: 10px;
+    fill: var(--color-black);
+    color: var(--color-black);
+}
+
+.sidebarMenuLink svg line, .sidebarMenuLink svg path{
+    stroke: var(--color-black);
+}
+
+.sidebarMenuLinkActive svg , .sidebarMenuLink:hover svg {
+    fill: var(--color-white);
+    color: var(--color-white);
+}
+
+.sidebarMenuLinkActive svg line, .sidebarMenuLinkActive svg path , .sidebarMenuLink:hover svg line, .sidebarMenuLink:hover svg path{
+    stroke: var(--color-white);
+}
+
+.sidebarMenuLinkText {
+    color: var(--color-black);
+    text-decoration: none;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.5s ease, width 0.5s ease;
+    width: 0px;
+}
+
+.expanded .sidebarMenuLinkText {
+    opacity: 1;
+    width: auto;
+}
+
+.sidebarMenuLinkActive .sidebarMenuLinkText , .sidebarMenuLink:hover .sidebarMenuLinkText {
+    color: var(--color-white);
+}

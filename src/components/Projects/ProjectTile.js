@@ -85,9 +85,9 @@ export default class ProjectTile extends Component {
 				</div>
 				<div className={projectTile.footer}>
 					<div className={projectTile.dayCount} style={dayCountStyle}>
-						{this.progressData("days") > 1
-							? this.progressData("days") > 7
-								? this.progressData("days") > 30
+						{this.progressData("days") > 0
+							? this.progressData("days") > 6
+								? this.progressData("days") > 27
 									? `${Math.round(this.progressData("days") / 30)} months left`
 									: `${Math.round(this.progressData("days") / 7)} weeks left`
 								: `${this.progressData("days")} days left`

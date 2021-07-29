@@ -1,0 +1,10 @@
+.wrapper-box {
+  padding: 30px;
+  border-radius: 30px;
+  background-color: var(--color-white);
+}
+
+.wrapper-heading {
+  font-size: 36px;
+  margin-bottom: 20px;
+}

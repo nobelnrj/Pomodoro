@@ -18,6 +18,7 @@
   outline: none;
   border-radius: 4px;
   font-size: 14px;
+  background: transparent;
 }
 .formLabel{
   position: absolute;
@@ -32,10 +33,21 @@
   position: absolute;
   bottom: 0;
 }
-.formInput:focus + .formLabel {
+.formInput:focus + .formLabel, .formInput:valid + .formLabel, .formLabel.active {
   top: 0px;
   transform: translateY(-50%);
   font-size: 12px;
   z-index: 1000;
   background-color: #fff;
+}
+
+.formButton {
+  padding: 10px 30px;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border-radius: 50px;
+  cursor: pointer;
+  border: none;
+  font-size: 18px;
+  margin-top: 10px;
 }
