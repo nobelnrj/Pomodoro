@@ -41,6 +41,7 @@ export default class ProjectTile extends Component {
 		var daysElapsed = this.getBusinessDateCount(startdate, todaysDate);
 		var percentage = 100 - ((duration - daysElapsed) / duration) * 100;
 		percentage = percentage > 100 ? 100 : percentage;
+		percentage = percentage < 0 ? 0 : percentage;
 		switch (type) {
 			case "percentage":
 				return Math.round(percentage);

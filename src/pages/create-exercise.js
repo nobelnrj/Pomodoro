@@ -8,6 +8,7 @@ import Form from "../components/FormElements/Form";
 import authForm from "../assets/css/auth/authForm.module.css";
 import { connect } from "react-redux";
 import { getEmployees } from "../store/actions/employees/action";
+import { postProject } from "../store/actions/projects/action";
 import { withRouter } from "react-router-dom";
 
 class CreateExercise extends Component {
@@ -27,25 +28,30 @@ class CreateExercise extends Component {
 				projectType: "",
 				startDate: new Date(),
 			},
+			employees: [],
+			leads: [],
+			postResponse: [],
 		};
-	}
-
-	componentDidMount() {
-		this.props.getEmployees();
+		props.getEmployees();
 	}
 
 	componentWillReceiveProps(nextProps) {
 		console.log(nextProps);
 		if (nextProps.employees) {
 			this.setState({
-				projects: nextProps.employees,
+				employees: nextProps.employees,
 			});
 		}
-		console.log(nextProps.employees);
+		console.log(this.state.employees);
+		this.createLeadEmployees(nextProps.employees);
 	}
 
 	onChangeDate(date) {
-		this.setState({});
+		let valueObject = this.state.value;
+		valueObject["startDate"] = date;
+		this.setState({
+			value: valueObject,
+		});
 	}
 
 	onSubmit() {
@@ -58,16 +64,30 @@ class CreateExercise extends Component {
 			projectType: this.state.value.projectType,
 			colorCode: this.state.value.colorCode,
 			projectStatus: this.state.value.projectStatus,
-			startDate: this.state.value.date,
+			startDate: this.state.value.startDate,
 		};
 
 		console.log(project);
+		this.props.postProject(project);
+		this.props.history.push("/");
+	}
 
-		// axios
-		// 	.post("http://localhost:5000/projects/add", project)
-		// 	.then((res) => console.log(res.data));
+	createLeadEmployees(employees) {
+		return this.getLeads(employees);
+	}
 
-		// window.location = "/";
+	getLeads(employees) {
+		console.log(employees);
+		let leads = employees.sort((data1, data2) => {
+			return new Date(data1.createdAt) - new Date(data2.createdAt);
+		});
+		let leadsArray = leads.reduce(function (acc, cur) {
+			let name = `${cur.firstname} ${cur.lastname}`;
+			acc.push(name);
+			return acc;
+		}, []);
+		console.log(leadsArray);
+		return leadsArray;
 	}
 
 	render() {
@@ -80,6 +100,15 @@ class CreateExercise extends Component {
 					onChange={(value) => this.setState({ value })}
 					onSubmit={this.onSubmit}
 					buttontext="Create Exercise">
+					<Field
+						type="select"
+						id="teamLead"
+						className="select"
+						isRequired={true}
+						label="Team Lead"
+						optionsValue={this.state.employees}
+						fieldName="teamLead"
+					/>
 					<Field
 						type="text"
 						id="projectName"
@@ -149,13 +178,15 @@ class CreateExercise extends Component {
 
 CreateExercise.propTypes = {
 	getEmployees: PropTypes.func.isRequired,
-	employees: PropTypes.object.isRequired,
+	employees: PropTypes.array.isRequired,
+	postResponse: PropTypes.array,
 };
 
 const mapStateToProps = (state) => ({
-	employees: state.employees,
+	employees: state.employees.employees,
+	postResponse: state.projects.postResponse,
 });
 
 export default withRouter(
-	connect(mapStateToProps, { getEmployees })(CreateExercise)
+	connect(mapStateToProps, { getEmployees, postProject })(CreateExercise)
 );

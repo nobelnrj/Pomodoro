@@ -1,0 +1,105 @@
+.searchBox {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.searchBar {
+  width: 60%;
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: solid 1px #ccc;
+  outline: none;
+}
+
+.searchBar:focus {
+  border-color: #000;
+}
+
+.sortOptions {
+  border-radius: 20px;
+  border: solid 1px #ccc;
+  outline: none;
+  padding: 10px 20px;
+}
+
+.sortOptions:focus {
+  border-color: #000;
+}
+
+.tagBox {
+  display: flex;
+  gap: 10px;
+  flex-wrap: nowrap;
+  margin-bottom: 15px;
+}
+
+.tagCheckbox {
+  display: none;
+}
+
+.tagLabel {
+	padding: 15px 25px;
+	border-radius: 50px;
+	background: rgba(0,0,0,0.5);
+	color: var(--color-white);
+	-webkit-transition: background-color 0.3s, color 0.3s;
+	transition: background-color 0.3s, color 0.3s;
+  cursor: pointer;
+  position: relative;
+}
+.tagLabel::before {
+	content: '';
+	position: absolute;
+	top: -20px;
+	left: -20px;
+	bottom: -20px;
+	right: -20px;
+	background: inherit;
+	border-radius: 50px;
+	z-index: -1;
+	opacity: 0.4;
+	-webkit-transform: scale3d(0.8, 0.5, 1);
+	transform: scale3d(0.8, 0.5, 1);
+}
+.tagCheckbox:checked+.tagLabel {
+	-webkit-transition: background-color 0.1s 0.3s, color 0.1s 0.3s;
+	transition: background-color 0.1s 0.3s, color 0.1s 0.3s;
+	color: #ECEFF1;
+	background-color: var(--color-black);
+	-webkit-animation: anim-moema-1 0.3s forwards;
+	animation: anim-moema-1 0.3s forwards;
+}
+.tagCheckbox:checked+.tagLabel::before {
+	-webkit-animation: anim-moema-2 0.3s 0.3s forwards;
+	animation: anim-moema-2 0.3s 0.3s forwards;
+}
+@keyframes anim-moema-1 {
+	60% {
+		-webkit-transform: scale3d(0.8, 0.8, 1);
+		transform: scale3d(0.8, 0.8, 1);
+	}
+	85% {
+		-webkit-transform: scale3d(1.1, 1.1, 1);
+		transform: scale3d(1.1, 1.1, 1);
+	}
+	100% {
+		-webkit-transform: scale3d(1, 1, 1);
+		transform: scale3d(1, 1, 1);
+	}
+}
+@keyframes anim-moema-2 {
+	to {
+		opacity: 0;
+		-webkit-transform: scale3d(1, 1, 1);
+		transform: scale3d(1, 1, 1);
+	}
+}
+
+.tagLabel:hover {
+	background-color: var(--color-black);
+}
+
+.tagCheckbox:checked+.tagLabel {
+  background-color: var(--color-black);
+}
