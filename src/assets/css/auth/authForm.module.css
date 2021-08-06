@@ -51,3 +51,30 @@
   font-size: 18px;
   margin-top: 10px;
 }
+
+.arrayWrapper {
+  position: absolute;
+  left: calc(100% + 50px);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+}
+
+.arrayValue {
+  padding: 10px 20px;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  margin-right: 10px;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.arrayValue::after {
+  content: 'X';
+  display: inline;
+  margin-left: 10px;
+}
+
+.arrayValue:hover::after {
+  color: rgb(182, 32, 32);
+}

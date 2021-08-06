@@ -65,6 +65,7 @@ class CreateExercise extends Component {
 			colorCode: this.state.value.colorCode,
 			projectStatus: this.state.value.projectStatus,
 			startDate: this.state.value.startDate,
+			tags: this.state.value.tags,
 		};
 
 		console.log(project);
@@ -101,12 +102,11 @@ class CreateExercise extends Component {
 					onSubmit={this.onSubmit}
 					buttontext="Create Exercise">
 					<Field
-						type="select"
+						type="text"
 						id="teamLead"
 						className="select"
 						isRequired={true}
 						label="Team Lead"
-						optionsValue={this.state.employees}
 						fieldName="teamLead"
 					/>
 					<Field
@@ -170,6 +170,13 @@ class CreateExercise extends Component {
 							Start Date
 						</label>
 					</div>
+					<Field
+						type="arrayInput"
+						id="tags"
+						className="something"
+						label="Project Tags"
+						fieldName="tags"
+					/>
 				</Form>
 			</div>
 		);

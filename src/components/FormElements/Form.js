@@ -42,6 +42,7 @@ export default class Form extends Component {
 	onChange = (fieldName, fieldValue) => {
 		const value = getNewValue(this.getValue(), fieldName, fieldValue);
 		this.setState({ value });
+		console.log(value);
 		this.props.onChange(value);
 	};
 

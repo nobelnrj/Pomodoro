@@ -5,6 +5,7 @@ import { ValueContext, OnChangeContext } from "./context";
 import authForm from "../../assets/css/auth/authForm.module.css";
 import Input from "./Input";
 import SmartSelect from "./SmartSelect";
+import ArrayInput from "./ArrayInput";
 
 export default class FieldElement extends Component {
 	constructor(props) {
@@ -39,6 +40,8 @@ export default class FieldElement extends Component {
 							optionsValue={this.props.optionsValue}
 						/>
 					);
+				case "arrayInput":
+					return <ArrayInput {...this.props} />;
 
 				default:
 					return (

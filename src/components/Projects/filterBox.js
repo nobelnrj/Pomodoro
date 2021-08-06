@@ -35,22 +35,24 @@ export default function FilterBox(props) {
 		}
 	};
 	const buildTags = () => {
-		return tags.map((tag, index) => {
-			return (
-				<div key={index} className={filterBoxStyle.tagBox}>
-					<input
-						id={tag}
-						type="checkbox"
-						value={tag}
-						onChange={onTagChange}
-						className={filterBoxStyle.tagCheckbox}
-					/>
-					<label htmlFor={tag} className={filterBoxStyle.tagLabel}>
-						{tag}
-					</label>
-				</div>
-			);
-		});
+		if (tags !== undefined) {
+			return tags.map((tag, index) => {
+				return (
+					<div key={index} className={filterBoxStyle.tagBox}>
+						<input
+							id={tag}
+							type="checkbox"
+							value={tag}
+							onChange={onTagChange}
+							className={filterBoxStyle.tagCheckbox}
+						/>
+						<label htmlFor={tag} className={filterBoxStyle.tagLabel}>
+							{tag}
+						</label>
+					</div>
+				);
+			});
+		}
 	};
 	return (
 		<div className={filterBoxStyle.filterWrapper}>

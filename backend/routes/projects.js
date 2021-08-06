@@ -15,9 +15,10 @@ router.route('/add').post((req, res) => {
   const projectType = req.body.projectType;
 	const colorCode = req.body.colorCode;
 	const projectStatus = req.body.projectStatus;
-	const startDate = Date.parse(req.body.startDate);
+  const startDate = Date.parse(req.body.startDate);
+	const tags = req.body.tags;
 
-  const newExercise = new Project({
+	const newExercise = new Project({
 		teamLead,
 		projectName,
 		description,
@@ -26,6 +27,7 @@ router.route('/add').post((req, res) => {
 		colorCode,
 		projectStatus,
 		startDate,
+		tags,
 	});
 
   newExercise

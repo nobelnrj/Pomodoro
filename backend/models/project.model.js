@@ -13,6 +13,7 @@ const projectSchema = new Schema(
 		colorCode: { type: String, required: false },
 		projectStatus: { type: String, required: true },
 		startDate: { type: Date, required: true },
+		tags: { type: Array, required: false },
 	},
 	{
 		timestamps: true,
