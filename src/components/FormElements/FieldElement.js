@@ -26,6 +26,7 @@ export default class FieldElement extends Component {
 							id={this.props.id}
 							type={this.props.type}
 							label={this.props.label}
+							value={this.props.value}
 						/>
 					);
 				case "select":
@@ -38,6 +39,7 @@ export default class FieldElement extends Component {
 							type={this.props.type}
 							label={this.props.label}
 							optionsValue={this.props.optionsValue}
+							value={this.props.value}
 						/>
 					);
 				case "arrayInput":
@@ -49,13 +51,13 @@ export default class FieldElement extends Component {
 							<input
 								onChange={this.onChange}
 								// value={this.state.value[this.state.fieldName]}
-								required={this.state.isRequired}
+								required={this.props.isRequired}
 								className={authForm.formInput}
-								id={this.state.id}
-								type={this.state.type}
+								id={this.props.id}
+								type={this.props.type}
 							/>
-							<label className={authForm.formLabel} htmlFor={this.state.id}>
-								{this.state.label}
+							<label className={authForm.formLabel} htmlFor={this.props.id}>
+								{this.props.label}
 							</label>
 							{/* <span className={authForm.formError}>{this.state.errors}</span> */}
 						</div>

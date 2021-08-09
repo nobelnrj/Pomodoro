@@ -26,6 +26,13 @@
     overflow: hidden;
 }
 
+.sidebarAction {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
 .sidebarMenuItem {
     margin-bottom: 10px;
     padding: 0 7px;
@@ -37,6 +44,12 @@
     display: flex;
     align-items: center;
     text-decoration: none !important;
+    border: none;
+    outline: none;
+    width: 100%;
+    background: transparent;
+    cursor: pointer;
+    font-size: 16px;
 }
 
 .sidebarMenuLinkActive {

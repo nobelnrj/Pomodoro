@@ -13,7 +13,7 @@ export const getProjects = () => (dispatch) => {
 	axios.get("http://localhost:5000/projects/").then((res) =>
 		dispatch({
 			type: GET_PROJECTS,
-			payload: res.data,
+			payload: res.data.results,
 		})
 	);
 };
@@ -21,8 +21,7 @@ export const getProjects = () => (dispatch) => {
 export const getProjectAllTags = () => (dispatch) => {
 	axios.get("http://localhost:5000/projects/").then((res) => {
 		let tags = [];
-		res.data.forEach((project) => {
-			console.log(project.tags);
+		res.data.results.forEach((project) => {
 			if (project.tags !== undefined) {
 				tags = tags.concat(project.tags);
 			}

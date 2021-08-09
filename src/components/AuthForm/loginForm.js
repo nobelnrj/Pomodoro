@@ -10,8 +10,7 @@ import Form from "../FormElements/Form";
 class LoginForm extends Component {
 	constructor() {
 		super();
-		this.state = {
-		}
+		this.state = {};
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -30,6 +29,7 @@ class LoginForm extends Component {
 			email: this.state.value.email,
 			password: this.state.value.password,
 		};
+
 		this.props.loginUser(userData);
 		console.log(userData);
 	};
@@ -37,9 +37,13 @@ class LoginForm extends Component {
 	render() {
 		return (
 			<div className={authForm.formWrapper}>
-				<Form state={this.state} addSubmitButton={true} onChange={value => this.setState({ value })} onSubmit={this.onSubmit}>
+				<Form
+					state={this.state}
+					addSubmitButton={true}
+					onChange={(value) => this.setState({ value })}
+					onSubmit={this.onSubmit}>
 					<Field
-						type="email"
+						type="text"
 						id="email"
 						className="something"
 						isRequired={true}
@@ -47,7 +51,7 @@ class LoginForm extends Component {
 						fieldName="email"
 					/>
 					<Field
-						type="password"
+						type="text"
 						id="password"
 						className="something"
 						isRequired={true}
@@ -63,7 +67,7 @@ class LoginForm extends Component {
 LoginForm.propTypes = {
 	loginUser: PropTypes.func.isRequired,
 	auth: PropTypes.object.isRequired,
-	errors: PropTypes.object.isRequired,
+	errors: PropTypes.object,
 };
 const mapStateToProps = (state) => ({
 	auth: state.auth,

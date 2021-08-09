@@ -1,0 +1,10 @@
+.projectInfoBox {
+  display: flex;
+  justify-content: space-between;
+  width: calc(100% / 3);
+  height: 80px;
+  align-items: center;
+  border-radius: 50px;
+  padding: 20px 50px;
+  gap: 30px;
+}

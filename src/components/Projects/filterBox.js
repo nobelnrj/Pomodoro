@@ -6,18 +6,12 @@ import { useSelector } from "react-redux";
 export default function FilterBox(props) {
 	const tags = useSelector((state) => state.projects.tags);
 	const [filters, SetFilters] = useState({});
-	console.log(tags);
 
 	const onSearch = (e) => {
-		if (e.target.value === "") {
-			props.resetToDefaultProjects();
-		} else {
-			let filtersCopy = filters;
-			filtersCopy.Search = e.target.value;
-			console.log(filtersCopy);
-			SetFilters(filtersCopy);
-			props.startFiltering(filtersCopy);
-		}
+		let filtersCopy = filters;
+		filtersCopy.Search = e.target.value;
+		SetFilters(filtersCopy);
+		props.startFiltering(filtersCopy);
 	};
 
 	const onTagChange = (e) => {
@@ -28,11 +22,7 @@ export default function FilterBox(props) {
 			: tagFilters.splice(tagFilters.indexOf(e.target.value), 1);
 		filtersCopy.Tags = tagFilters;
 		SetFilters(filtersCopy);
-		if (filters.Tags.length > 0) {
-			props.startFiltering(filtersCopy);
-		} else {
-			props.resetToDefaultProjects();
-		}
+		props.startFiltering(filtersCopy);
 	};
 	const buildTags = () => {
 		if (tags !== undefined) {

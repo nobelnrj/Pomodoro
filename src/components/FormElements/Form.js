@@ -22,7 +22,6 @@ export default class Form extends Component {
 	};
 	constructor(props) {
 		super();
-		console.log(props);
 		this.state = { value: cloneDeep(props.state.value) };
 	}
 	componentDidUpdate(prevProps, prevState) {
@@ -42,7 +41,6 @@ export default class Form extends Component {
 	onChange = (fieldName, fieldValue) => {
 		const value = getNewValue(this.getValue(), fieldName, fieldValue);
 		this.setState({ value });
-		console.log(value);
 		this.props.onChange(value);
 	};
 
@@ -61,7 +59,6 @@ export default class Form extends Component {
 
 	renderChild() {
 		const domProps = omit(this.props, keys(Form.propTypes));
-		console.log(this.props);
 		return (
 			<OnChangeContext.Provider value={this.onChange}>
 				<ValueContext.Provider value={this.state.value}>

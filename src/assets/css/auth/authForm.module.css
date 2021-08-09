@@ -58,6 +58,7 @@
   top: 50%;
   transform: translateY(-50%);
   width: 100%;
+  display: flex;
 }
 
 .arrayValue {
@@ -67,6 +68,7 @@
   margin-right: 10px;
   border-radius: 50px;
   cursor: pointer;
+  white-space: nowrap;
 }
 
 .arrayValue::after {

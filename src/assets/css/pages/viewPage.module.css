@@ -1,0 +1,11 @@
+.contentWrapper {
+  text-align: center;
+}
+
+.infoWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 50px;
+  justify-content: space-around;
+  gap: 30px;
+}

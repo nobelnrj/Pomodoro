@@ -32,6 +32,7 @@ class ExercisesList extends Component {
 			filteredProjects: [],
 			filterTags: [],
 			filters: { Search: "", Tags: [] },
+			isAuthenticated: false,
 		};
 	}
 
@@ -47,9 +48,9 @@ class ExercisesList extends Component {
 				projects: nextProps.projects.projects,
 				filteredProjects: nextProps.projects.projects,
 				tags: nextProps.projects.tags,
+				isAuthenticated: nextProps.auth.isAuthenticated,
 			});
 		}
-		console.log(nextProps.projects);
 	}
 
 	deleteExercise(id) {
@@ -64,6 +65,7 @@ class ExercisesList extends Component {
 						project={project}
 						deleteExercise={this.deleteExercise}
 						key={project._id}
+						isAuthenticated={this.state.isAuthenticated}
 					/>
 				);
 			});
@@ -73,7 +75,6 @@ class ExercisesList extends Component {
 	}
 
 	startSearchFiltering(project, value) {
-		console.log(project, value);
 		if (project.projectName.toLowerCase().includes(value.toLowerCase())) {
 			return true;
 		}
@@ -83,9 +84,17 @@ class ExercisesList extends Component {
 	startSorting(project1, project2, value) {
 		switch (value) {
 			case "name_ascending":
-				return project2.projectName - project1.projectName;
+				if (project1.projectName < project2.projectName) {
+					return -1;
+				} else {
+					return 1;
+				}
 			case "name_descending":
-				return project1.projectName - project2.projectName;
+				if (project2.projectName < project1.projectName) {
+					return -1;
+				} else {
+					return 1;
+				}
 			case "date_ascending":
 				return new Date(project1.startDate) - new Date(project2.startDate);
 			case "date_descending":
@@ -96,19 +105,16 @@ class ExercisesList extends Component {
 	}
 
 	onSort(e) {
-		console.log(e.target.value);
 		let filteredProjects = this.state.filteredProjects.sort(
 			(project1, project2) =>
 				this.startSorting(project1, project2, e.target.value)
 		);
-		console.log(filteredProjects);
 		this.setState({
 			filteredProjects,
 		});
 	}
 
 	startTagsFiltering(project, filters) {
-		console.log(filters);
 		if (project.tags === undefined) {
 			return false;
 		}
@@ -122,8 +128,21 @@ class ExercisesList extends Component {
 		});
 	}
 
+	isEmpty(obj) {
+		for (var prop in obj) {
+			if (obj.hasOwnProperty(prop)) {
+				return false;
+			}
+		}
+		return JSON.stringify(obj) === JSON.stringify({});
+	}
+
 	startFiltering(filters) {
 		let filteredProjects = this.state.projects;
+		if (this.isEmpty(filters)) {
+			this.resetToDefaultProjects();
+			return;
+		}
 		for (let prop in filters) {
 			if (filters[prop].length > 0) {
 				filteredProjects = filteredProjects.filter((project) =>
@@ -131,7 +150,6 @@ class ExercisesList extends Component {
 				);
 			}
 		}
-		console.log(filters, filteredProjects);
 		this.setState({
 			filteredProjects,
 		});
@@ -165,6 +183,7 @@ const mapStateToProps = (state) => ({
 	projects: state.projects,
 	tags: state.tags,
 	errors: state.errors,
+	auth: state.auth,
 });
 
 export default withRouter(

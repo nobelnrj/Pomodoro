@@ -12,7 +12,9 @@ export default class ProjectTile extends Component {
 			project: props.project,
 			deleteExercise: props.deleteExercise,
 			actionState: false,
+			isAuthenticated: props.isAuthenticated,
 		};
+		console.log(this.state.isAuthenticated);
 	}
 	getBusinessDateCount(startDate, endDate) {
 		var elapsed, daysBeforeFirstSunday, daysAfterLastSunday;
@@ -53,7 +55,7 @@ export default class ProjectTile extends Component {
 	}
 	openActions() {}
 	render() {
-		const { project, deleteExercise } = this.state;
+		const { project, deleteExercise, isAuthenticated } = this.state;
 		const tileBackground = {
 			backgroundColor: this.state.project.colorCode,
 			opacity: 0.6,
@@ -115,22 +117,36 @@ export default class ProjectTile extends Component {
 						className={projectTile.actionButton}
 						style={actionButtonColor}
 						to={"/view/" + project._id}>
-						view
+						details
 					</Link>
-					<Link
-						className={projectTile.actionButton}
-						style={actionButtonColor}
-						to={"/edit/" + project._id}>
-						edit
-					</Link>
-					<button
-						className={projectTile.actionButton}
-						style={actionButtonColor}
-						onClick={() => {
-							deleteExercise(project._id);
-						}}>
-						delete
-					</button>
+					{project.projectLink ? (
+						<a
+							className={projectTile.actionButton}
+							style={actionButtonColor}
+							target="_blank"
+							rel="noopener noreferrer"
+							href={project.projectLink}>
+							view
+						</a>
+					): null}
+					{isAuthenticated ? (
+						<Link
+							className={projectTile.actionButton}
+							style={actionButtonColor}
+							to={"/edit/" + project._id}>
+							edit
+						</Link>
+					) : null}
+					{isAuthenticated ? (
+						<button
+							className={projectTile.actionButton}
+							style={actionButtonColor}
+							onClick={() => {
+								deleteExercise(project._id);
+							}}>
+							delete
+						</button>
+					) : null}
 				</div>
 			</div>
 		);

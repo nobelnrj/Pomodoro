@@ -6,16 +6,6 @@ import authForm from "../../assets/css/auth/authForm.module.css";
 export default class Input extends Component {
 	constructor(props) {
 		super();
-		this.state = {
-			value: props.value,
-			type: props.type,
-			id: props.id,
-			class: props.className,
-			isRequired: props.isRequired,
-			label: props.label,
-			fieldName: props.fieldName,
-			optionsValue: props.optionsValue || null,
-		};
 	}
 	onChange = (e) => {
 		this.props.onChange(e.target.value);
@@ -25,13 +15,14 @@ export default class Input extends Component {
 			<div className={authForm.authInputWrapper}>
 				<input
 					onChange={this.onChange.bind(this)}
-					required={this.state.isRequired}
+					required={this.props.isRequired}
 					className={authForm.formInput}
-					id={this.state.id}
-					type={this.state.type}
+					id={this.props.id}
+					type={this.props.type}
+					value={this.props.value}
 				/>
-				<label className={authForm.formLabel} htmlFor={this.state.id}>
-					{this.state.label}
+				<label className={authForm.formLabel} htmlFor={this.props.id}>
+					{this.props.label}
 				</label>
 				{/* <span className={authForm.formError}>{this.state.errors}</span> */}
 			</div>

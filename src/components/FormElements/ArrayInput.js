@@ -4,33 +4,34 @@ import React, { useState } from "react";
 import authForm from "../../assets/css/auth/authForm.module.css";
 
 export default function ArrayInput(props) {
-	const [arrayInput, setArrayInput] = useState(["React", "Shopify"]);
+	console.log(props.value);
+	// const [arrayInput, setArrayInput] = useState(props.value);
 	console.log(props);
 	const onChange = (e) => {
 		if (e.target.value.includes(",")) {
 			let value = e.target.value.slice(0, -1);
 			console.log(value);
-			let currentArray = arrayInput;
+			let currentArray = props.value;
 			currentArray.push(value);
-			setArrayInput(currentArray);
-			props.onChange(arrayInput);
+			props.onChange(currentArray);
 			e.target.value = "";
 		}
 	};
 	const removeTag = (e) => {
 		let value = e.target.dataset.value;
-		let currentArray = arrayInput;
+		let currentArray = props.value;
 		console.log(currentArray);
 		currentArray.splice(currentArray.indexOf(value), 1);
 		// console.log(currentArray);
 		// let newArray = currentArray;
-		setArrayInput(
-			arrayInput.splice(arrayInput.indexOf(e.target.dataset.value), 1)
-		);
+		// setArrayInput(
+		// 	arrayInput.splice(arrayInput.indexOf(e.target.dataset.value), 1)
+		// );
 	};
 	const populateTags = () => {
-		if (arrayInput !== undefined) {
-			return arrayInput.map((value, index) => {
+		if (props.value !== undefined) {
+			console.log("triggered");
+			return props.value.map((value, index) => {
 				return (
 					<span
 						key={index}

@@ -16,7 +16,6 @@ export default class Input extends Component {
 		// 	fieldName: props.fieldName,
 		// 	optionsValue: props.optionsValue || null,
 		// };
-		console.log(props.optionsValue);
 	}
 	onChange = (e) => {
 		this.props.onChange(e.target.value);
