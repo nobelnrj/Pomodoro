@@ -1,11 +1,19 @@
 /** @format */
 
-import React from "react";
+import React, { useEffect } from "react";
 import timeLineStyle from "../assets/css/components/timeLine.module.css";
+import { getTimeline } from "../store/actions/timeline/action";
 import Fade from "react-reveal/Fade";
 import AnimatedOverlay from "../components/Projects/animatedOverlay";
+import { useSelector, useDispatch } from "react-redux";
 
 export default function TimeLine() {
+	const dispatch = useDispatch();
+	const timeline = useSelector((state) => state);
+	useEffect(() => {
+		dispatch(getTimeline());
+	}, [dispatch]);
+	console.log(timeline);
 	const timeLines = [
 		{
 			name: "My First Project",

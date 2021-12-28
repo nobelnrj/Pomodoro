@@ -41,7 +41,8 @@ class LoginForm extends Component {
 					state={this.state}
 					addSubmitButton={true}
 					onChange={(value) => this.setState({ value })}
-					onSubmit={this.onSubmit}>
+					onSubmit={this.onSubmit}
+					buttontext="Login">
 					<Field
 						type="text"
 						id="email"
