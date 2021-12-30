@@ -8,9 +8,10 @@ import {
 	GET_PROJECTS_ALLTAGS,
 	POST_PROJECT,
 } from "./types";
+import { DefaultEndpoint } from "../../../config";
 
 export const getProjects = () => (dispatch) => {
-	axios.get("http://localhost:5000/projects/").then((res) =>
+	axios.get(`${DefaultEndpoint}/projects/`).then((res) =>
 		dispatch({
 			type: GET_PROJECTS,
 			payload: res.data.results,
@@ -19,7 +20,7 @@ export const getProjects = () => (dispatch) => {
 };
 
 export const getProjectAllTags = () => (dispatch) => {
-	axios.get("http://localhost:5000/projects/").then((res) => {
+	axios.get(`${DefaultEndpoint}/projects/`).then((res) => {
 		let tags = [];
 		res.data.results.forEach((project) => {
 			if (project.tags !== undefined) {
@@ -35,7 +36,7 @@ export const getProjectAllTags = () => (dispatch) => {
 };
 
 export const getProjectById = (id) => (dispatch) => {
-	axios.get("http://localhost:5000/projects/" + id).then((res) =>
+	axios.get(`${DefaultEndpoint}/projects/` + id).then((res) =>
 		dispatch({
 			type: GET_PROJECTBYID,
 			payload: res.data,
@@ -44,7 +45,7 @@ export const getProjectById = (id) => (dispatch) => {
 };
 
 export const postProject = (data) => (dispatch) => {
-	axios.post("http://localhost:5000/projects/add", data).then((res) =>
+	axios.post(`${DefaultEndpoint}/projects/add`, data).then((res) =>
 		dispatch({
 			type: POST_PROJECT,
 			payload: res.data,
@@ -53,7 +54,7 @@ export const postProject = (data) => (dispatch) => {
 };
 
 export const removeProject = (id) => (dispatch) => {
-	axios.delete("http://localhost:5000/projects/" + id).then((res) =>
+	axios.delete(`${DefaultEndpoint}/projects/` + id).then((res) =>
 		dispatch({
 			type: REMOVE_PROJECT,
 			payload: id,
