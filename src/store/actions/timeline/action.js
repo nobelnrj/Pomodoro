@@ -13,20 +13,3 @@ export const getTimeline = () => (dispatch) => {
 	);
 };
 
-export const postTimeline = (data) => (dispatch) => {
-	axios.post(`${DefaultEndpoint}/timeline/add`, data).then((res) =>
-		dispatch({
-			type: POST_TIMELINE,
-			payload: res.data,
-		})
-	);
-};
-
-export const removeTimeline = (id) => (dispatch) => {
-	axios.delete(`${DefaultEndpoint}/timeline/` + id).then((res) =>
-		dispatch({
-			type: REMOVE_TIMELINE,
-			payload: id,
-		})
-	);
-};

@@ -9,55 +9,10 @@ import { useSelector, useDispatch } from "react-redux";
 
 export default function TimeLine() {
 	const dispatch = useDispatch();
-	const timeline = useSelector((state) => state);
 	useEffect(() => {
 		dispatch(getTimeline());
 	}, [dispatch]);
-	console.log(timeline);
-	const timeLines = [
-		{
-			name: "My First Project",
-			startDate: "01-01-2021",
-			endDate: "07-08-2021",
-			projectLink: "Project 1",
-			description: "Something about the timeline",
-		},
-		{
-			name: "My First Project",
-			startDate: "01-01-2021",
-			endDate: "07-08-2021",
-			projectLink: "Project 1",
-			description: "Something about the timeline",
-		},
-		{
-			name: "My First Project",
-			startDate: "01-01-2021",
-			endDate: "07-08-2021",
-			projectLink: "Project 1",
-			description: "Something about the timeline",
-		},
-		{
-			name: "My First Project",
-			startDate: "01-01-2021",
-			endDate: "07-08-2021",
-			projectLink: "Project 1",
-			description: "Something about the timeline",
-		},
-		{
-			name: "My First Project",
-			startDate: "01-01-2021",
-			endDate: "07-08-2021",
-			projectLink: "Project 1",
-			description: "Something about the timeline",
-		},
-		{
-			name: "My First Project",
-			startDate: "01-01-2021",
-			endDate: "07-08-2021",
-			projectLink: "Project 1",
-			description: "Something about the timeline",
-		},
-	];
+	const timeLines = useSelector((state) => state.timeline.timeline);
 	const getDateFormated = (dateString) => {
 		let date = new Date(dateString);
 		let options = {
@@ -94,10 +49,10 @@ export default function TimeLine() {
 								: timeLineStyle.timeLineItemDetailsOdd
 						}`}>
 						<Fade>
-							<h4>{timeline.name}</h4>
-							<p>{timeline.description}</p>
+							<h4 className={timeLineStyle.heading}>{timeline.name}</h4>
+							<p className={timeLineStyle.desc}>{timeline.description}</p>
 							<p>{timeline.projectLink}</p>
-							<p>{timeline.endDate}</p>
+							<p className={timeLineStyle.endDate}>{index === timeLines.length-1 ? "Present" : getDateFormated(timeline.endDate)}</p>
 						</Fade>
 					</div>
 				</li>

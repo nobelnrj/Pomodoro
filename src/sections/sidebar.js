@@ -3,7 +3,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import SidebarMenu from "../components/Sidebar-menu/sidebar-menu";
-import SidebarAction from "../components/Sidebar-menu/sidebar-action";
 import styles from "../assets/css/sections/sidebar-menu.module.css";
 
 export default class Navbar extends Component {
@@ -34,7 +33,6 @@ export default class Navbar extends Component {
 						{this.state.expanded ? "Portfolio" : "NRJ"}
 					</Link>
 					<SidebarMenu expanded={this.state.expanded} />
-					<SidebarAction expanded={this.state.expanded} />
 				</nav>
 			</aside>
 		);

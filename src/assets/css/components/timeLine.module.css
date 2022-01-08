@@ -9,7 +9,7 @@
   overflow-x: scroll;
   position: relative;
   margin: 50px 40px 0;
-  padding: 250px 0 40px;
+  padding: 320px 0 40px;
 }
 
 .timeLine {
@@ -88,4 +88,20 @@
 }
 .timeLineItemDetailsEven {
   bottom: 140px;
+}
+
+.heading {
+  color: #3131f3;
+  margin-bottom: 10px;
+}
+
+.desc {
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.endDate {
+  margin-top: 10px;
+  color: #3131f3;
+  font-size: 14px;
 }

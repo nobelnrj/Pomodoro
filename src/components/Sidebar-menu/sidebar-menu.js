@@ -32,28 +32,6 @@ export default function SidebarMenu() {
 					<span className={styles.sidebarMenuLinkText}>Timeline</span>
 				</NavLink>
 			</li>
-			{isAuthenticated ? (
-				<li className={styles.sidebarMenuItem}>
-					<NavLink
-						activeClassName={styles.sidebarMenuLinkActive}
-						to="/create"
-						className={styles.sidebarMenuLink}>
-						<AddTaskIcon />
-						<span className={styles.sidebarMenuLinkText}>Create Project</span>
-					</NavLink>
-				</li>
-			) : null}
-			{isAuthenticated ? (
-				<li className={styles.sidebarMenuItem}>
-					<NavLink
-						activeClassName={styles.sidebarMenuLinkActive}
-						to="/user"
-						className={styles.sidebarMenuLink}>
-						<AddUserIcon />
-						<span className={styles.sidebarMenuLinkText}>Create Employee</span>
-					</NavLink>
-				</li>
-			) : null}
 		</ul>
 	);
 }

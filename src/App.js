@@ -14,15 +14,9 @@ import { useSelector } from "react-redux";
 
 import Navbar from "./sections/sidebar";
 import Header from "./sections/header";
-import Login from "./auth/login";
-import Register from "./auth/register";
 import ExercisesList from "./pages/project-list";
 import TimeLine from "./pages/timeline";
-import EditProject from "./pages/edit-project";
 import ViewProject from "./pages/view-project";
-import CreateExercise from "./pages/create-exercise";
-import CreateUser from "./pages/create-user";
-import PrivateRoute from "./components/Private-route/PrivateRoute";
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -48,16 +42,11 @@ function App() {
 		<Router>
 			<Navbar />
 			<Header />
-			<Route path="/register" component={Register} />
-			<Route path="/login" component={Login} />
 			<section className="pageContainer">
 				<Switch>
 					<Route exact path="/" component={ExercisesList} />
 					<Route exact path="/timeline" component={TimeLine} />
-					<PrivateRoute path="/edit/:id" component={EditProject} />
 					<Route path="/view/:id" component={ViewProject} />
-					<PrivateRoute path="/create" component={CreateExercise} />
-					<PrivateRoute path="/user" component={CreateUser} />
 				</Switch>
 			</section>
 		</Router>
