@@ -18,7 +18,35 @@
     font-size: 16px;
     display: block;
     padding: 20px;
-    text-align: center;
+    text-align: left;
+    position: relative;
+}
+
+.logo svg {
+    position: absolute;
+    left: 20px;
+    top: 10px;
+    transition: left 0.5s ease, transform 0.5s ease;
+}
+
+.logo span {
+    display: inline-block;
+    width: 0;
+    opacity: 0;
+    font-weight: bold;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.sidebar.expanded .logo svg {
+    left: calc(100% - 74px);
+    transform: rotate(180deg);
+}
+
+.sidebar.expanded .logo span {
+    width: 100%;
+    opacity: 1;
+    transition: opacity 1s ease, width 1s ease;
 }
 
 .sidebarMenu {

@@ -4,6 +4,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import SidebarMenu from "../components/Sidebar-menu/sidebar-menu";
 import styles from "../assets/css/sections/sidebar-menu.module.css";
+import { ReactComponent as FootballIcon } from "../assets/svg/football.svg";
 
 export default class Navbar extends Component {
 	constructor(props) {
@@ -11,10 +12,12 @@ export default class Navbar extends Component {
 
 		this.state = {
 			expanded: false,
+			footballLabel: false,
 		};
 	}
 
 	render() {
+		const { footballLabel } = this.state;
 		return (
 			<aside
 				className={
@@ -30,7 +33,8 @@ export default class Navbar extends Component {
 				}}>
 				<nav>
 					<Link to="/" className={styles.logo}>
-						{this.state.expanded ? "Portfolio" : "NRJ"}
+						<span>{footballLabel ? <span style={{paddingLeft: "24px"}}>I  🖤  Foot</span> : "Portfolio"}</span>
+						<FootballIcon onMouseEnter={() => this.setState({ footballLabel: true })} onMouseLeave={() => this.setState({footballLabel: false})}/>
 					</Link>
 					<SidebarMenu expanded={this.state.expanded} />
 				</nav>
