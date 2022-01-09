@@ -19,7 +19,7 @@ export default class header extends Component {
 							</style>
 						</defs>
 
-						<text x="50%" y="60%" text-anchor="middle">
+						<text x="50%" y="60%" textAnchor="middle">
 							NRJ
 						</text>
 					</svg>

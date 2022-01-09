@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import timeLineStyle from "../assets/css/components/timeLine.module.css";
 import { getTimeline } from "../store/actions/timeline/action";
 import Fade from "react-reveal/Fade";
@@ -21,10 +21,11 @@ export default function TimeLine() {
 			month: "long",
 			day: "numeric",
 		};
-		console.log(date.toLocaleDateString("en-US", options));
 		date = date.toLocaleDateString("en-US", options);
 		return date;
 	};
+	const timelineContainer = useRef();
+	const [timelineState, updateTimelineState] = useState(1)
 	const buildTimeline = () => {
 		return timeLines.map((timeline, index) => {
 			return (
@@ -64,15 +65,25 @@ export default function TimeLine() {
 			<AnimatedOverlay colorCode="#3131f3">
 				<div className={timeLineStyle.content}>
 					<h3 className="wrapper-heading">Timeline</h3>
-					<p>
+					<p className="wrapper-content">
 						This timeline gives you a detailed understanding about the path that
 						I took to reach the position that I am right now.
 					</p>
 				</div>
 			</AnimatedOverlay>
-			<div className={timeLineStyle.timeLineWrapper}>
+			<div className={timeLineStyle.timeLineWrapper} ref={timelineContainer}>
 				<ul className={timeLineStyle.timeLine}>{buildTimeline()}</ul>
 			</div>
+			{window.innerWidth < 700 && <div className={timeLineStyle.buttonWrapper}>
+				<button onClick={() => {
+					updateTimelineState(timelineState === timeLines.length ? 0 : timelineState + 1);
+					timelineContainer.current.scroll({
+						top: 0,
+						left: timelineContainer.current.offsetWidth * timelineState,
+						behavior: 'smooth'
+					});
+				}}>Next Timline</button>
+			</div>}
 		</div>
 	);
 }

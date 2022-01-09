@@ -9,7 +9,6 @@ import { useSelector } from "react-redux";
 
 export default function SidebarMenu() {
 	const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-	console.log(isAuthenticated);
 	return (
 		<ul className={styles.sidebarMenu}>
 			<li className={styles.sidebarMenuItem}>

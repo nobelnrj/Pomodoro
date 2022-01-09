@@ -106,14 +106,34 @@
   font-size: 14px;
 }
 
+.buttonWrapper {
+  text-align: center;
+}
+
+.buttonWrapper button {
+  padding: 5px 10px;
+  background-color: #3131f3;
+  color: #fff;
+  text-transform: uppercase;
+  border-radius: 12px;
+  outline: none;
+  border: none;
+  margin-top: 10px;
+}
+
 @media screen and (max-width: 700px) {
   .timeLineWrapper {
     margin: 10px 20px 0;
-    padding: 380px 0 40px;
+    padding: 400px 0 40px;
+    width: calc(100% - 30px);
   }
 
   .timeLineItem {
     width: 100%;
     min-width: 100%;
+  }
+
+  .timeLineItemStartDate {
+    font-size: 12px;
   }
 }
