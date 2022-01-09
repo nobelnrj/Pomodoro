@@ -23,10 +23,10 @@ export default class Navbar extends Component {
 						: styles.sidebar
 				}
 				onMouseEnter={() => {
-					this.setState({ expanded: true });
+					if (window.innerWidth > 700) { this.setState({ expanded: true }) };
 				}}
 				onMouseLeave={() => {
-					this.setState({ expanded: false });
+					if (window.innerWidth > 700) { this.setState({ expanded: false }) };
 				}}>
 				<nav>
 					<Link to="/" className={styles.logo}>

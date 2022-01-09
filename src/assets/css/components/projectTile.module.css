@@ -159,3 +159,8 @@
 .actionButton:last-child {
   margin-bottom: 0px;
 }
+
+.removeLinkStyle {
+  text-decoration: none;
+  color: #000 !important;
+}

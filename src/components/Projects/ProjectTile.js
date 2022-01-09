@@ -77,7 +77,11 @@ export default class ProjectTile extends Component {
 						{project.startDate.substring(0, 10)}
 					</div>
 				</div>
-				<div className={projectTile.content}>
+				<Link
+						className={projectTile.removeLinkStyle}
+						style={actionButtonColor}
+						to={"/view/" + project._id}>
+					<div className={projectTile.content}>
 					<p className={projectTile.name}>{project.projectName}</p>
 					<p className={projectTile.type}>{project.projectType}</p>
 					<p className={projectTile.lead}>Lead By: {project.teamLead}</p>
@@ -85,7 +89,8 @@ export default class ProjectTile extends Component {
 						percentage={this.progressData("percentage")}
 						progressColor={project.colorCode}
 					/>
-				</div>
+					</div>
+				</Link>
 				<div className={projectTile.footer}>
 					<div className={projectTile.dayCount} style={dayCountStyle}>
 						{this.progressData("days") > 0

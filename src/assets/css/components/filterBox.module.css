@@ -30,7 +30,7 @@
 .tagBox {
   display: flex;
   gap: 10px;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   margin-bottom: 15px;
 }
 
@@ -102,4 +102,23 @@
 
 .tagCheckbox:checked+.tagLabel {
   background-color: var(--color-black);
+}
+
+@media screen and (max-width: 700px) {
+	.searchBox {
+		flex-direction: column;
+	}
+
+	.searchBar {
+		width: 100%;
+		margin-bottom: 10px;
+	}
+
+	.tagBox {
+		margin-bottom: 5px;
+	}
+	
+	.tagLabel {
+		padding: 5px 10px;
+	}
 }

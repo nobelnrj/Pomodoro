@@ -36,9 +36,9 @@ export default function ViewProject(props) {
 			<div className={style.contentWrapper}>
 				<AnimatedOverlay colorCode={project.colorCode}>
 					<h3 className="wrapper-heading">{project.projectName}</h3>
-					<p className={style.projectDescription}>{project.description}</p>
+					<p className="wrapper-content">{project.description}</p>
 				</AnimatedOverlay>
-				<h3 className="wrapper-heading" style={{ marginTop: "50px" }}>
+				<h3 className="wrapper-heading" style={{ marginTop: window.innerWidth < 700 ? "20px":"50px" }}>
 					Project Details
 				</h3>
 				<div className={style.infoWrapper}>

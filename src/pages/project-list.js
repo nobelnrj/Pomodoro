@@ -12,6 +12,7 @@ import { withRouter } from "react-router-dom";
 import ProjectTile from "../components/Projects/ProjectTile";
 import style from "../assets/css/pages/projectList.module.css";
 import FilterBox from "../components/Projects/filterBox";
+import { ReactComponent as FilterIcon } from "../assets/svg/filter.svg";
 
 class ExercisesList extends Component {
 	constructor(props) {
@@ -33,6 +34,7 @@ class ExercisesList extends Component {
 			filterTags: [],
 			filters: { Search: "", Tags: [] },
 			isAuthenticated: false,
+			isFilterBoxOpen: window.innerWidth < 700 ? false : true,
 		};
 	}
 
@@ -156,14 +158,16 @@ class ExercisesList extends Component {
 	}
 
 	render() {
+		const { isFilterBoxOpen } = this.state;
 		return (
 			<div className="wrapper-box">
-				<FilterBox
+				{window.innerWidth < 700 && <span className={style.filterIconWrapper} onClick={() => this.setState({isFilterBoxOpen: !isFilterBoxOpen})}><FilterIcon /></span>}
+				{isFilterBoxOpen && <FilterBox
 					resetToDefaultProjects={this.resetToDefaultProjects}
 					startFiltering={this.startFiltering}
 					onSort={this.onSort}
 					tags={this.state.tags}
-				/>
+				/>}
 				<h3 className="wrapper-heading">Projects</h3>
 				<div className={style.projectListContainer}>{this.exerciseList()}</div>
 			</div>
