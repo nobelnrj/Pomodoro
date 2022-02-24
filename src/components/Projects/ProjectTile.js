@@ -13,6 +13,7 @@ export default class ProjectTile extends Component {
 			deleteExercise: props.deleteExercise,
 			actionState: false,
 			isAuthenticated: props.isAuthenticated,
+			colorStrength: props.colorStrength
 		};
 		console.log(this.state.isAuthenticated);
 	}
@@ -55,7 +56,7 @@ export default class ProjectTile extends Component {
 	}
 	openActions() {}
 	render() {
-		const { project, deleteExercise, isAuthenticated } = this.state;
+		const { project, deleteExercise, isAuthenticated, colorStrength } = this.state;
 		const tileBackground = {
 			backgroundColor: this.state.project.colorCode,
 			opacity: 0.6,
@@ -70,7 +71,7 @@ export default class ProjectTile extends Component {
 			color: this.state.project.colorCode,
 		};
 		return (
-			<div className={projectTile.container}>
+			<div className={colorStrength ? projectTile.container: `${projectTile.container} ${projectTile.light}`}>
 				<div className={projectTile.overlay} style={tileBackground}></div>
 				<div className={projectTile.header}>
 					<div className={projectTile.startDate}>
@@ -79,7 +80,6 @@ export default class ProjectTile extends Component {
 				</div>
 				<Link
 						className={projectTile.removeLinkStyle}
-						style={actionButtonColor}
 						to={"/view/" + project._id}>
 					<div className={projectTile.content}>
 					<p className={projectTile.name}>{project.projectName}</p>
@@ -134,24 +134,6 @@ export default class ProjectTile extends Component {
 							view
 						</a>
 					): null}
-					{isAuthenticated ? (
-						<Link
-							className={projectTile.actionButton}
-							style={actionButtonColor}
-							to={"/edit/" + project._id}>
-							edit
-						</Link>
-					) : null}
-					{isAuthenticated ? (
-						<button
-							className={projectTile.actionButton}
-							style={actionButtonColor}
-							onClick={() => {
-								deleteExercise(project._id);
-							}}>
-							delete
-						</button>
-					) : null}
 				</div>
 			</div>
 		);

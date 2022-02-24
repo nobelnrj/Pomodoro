@@ -5,7 +5,7 @@ import style from "../../assets/css/components/animatedOverlay.module.css";
 
 export default function AnimatedOverlay(props) {
 	const color = {
-		color: props.colorCode,
+		color: props.fontColor,
 	};
 	const bgColor = {
 		backgroundColor: props.colorCode,

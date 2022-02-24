@@ -17,6 +17,7 @@ import Header from "./sections/header";
 import ExercisesList from "./pages/project-list";
 import TimeLine from "./pages/timeline";
 import ViewProject from "./pages/view-project";
+import TestPage from "./pages/testpage";
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -47,6 +48,7 @@ function App() {
 					<Route exact path="/" component={ExercisesList} />
 					<Route exact path="/timeline" component={TimeLine} />
 					<Route path="/view/:id" component={ViewProject} />
+					<Route path="/test" component={TestPage} />
 				</Switch>
 			</section>
 		</Router>

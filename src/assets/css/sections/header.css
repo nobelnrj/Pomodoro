@@ -27,6 +27,31 @@ svg text {
   
 }
 
+.spanForN {
+  position: absolute;
+  width: 35px;
+  height: 37px;
+  top: 55px;
+  left: 88px;
+  cursor: pointer;
+}
+.spanForR {
+  position: absolute;
+  width: 35px;
+  height: 37px;
+  top: 55px;
+  left: 133px;
+  cursor: pointer;
+}
+.spanForJ {
+  position: absolute;
+  width: 35px;
+  height: 37px;
+  top: 55px;
+  left: 175px;
+  cursor: pointer;
+}
+
 @keyframes textAnimate {
   0% {
     stroke-dasharray: 0 50%;
