@@ -29,7 +29,7 @@
 
 .startDate {
   font-size: 14px;
-  color: #525050;
+  color: inherit;
 }
 
 .content {
@@ -52,7 +52,7 @@
 
 .lead {
   font-size: 14px;
-  color: #525050;
+  color: inherit;
   margin-bottom: 10px;
 }
 
@@ -83,6 +83,7 @@
   height: 14px;
   cursor: pointer;
   padding: 0;
+  color: inherit;
 }
 
 .actionTrigger::before, .actionTrigger::after {
@@ -90,7 +91,7 @@
   position: absolute;
   width: 5px;
   height: 5px;
-  background-color: var(--color-black);
+  background-color: currentColor;
   border-radius: 50%;
 }
 
@@ -162,5 +163,9 @@
 
 .removeLinkStyle {
   text-decoration: none;
-  color: #000 !important;
+  color: inherit;
+}
+
+.light {
+  color: #fff;
 }

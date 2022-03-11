@@ -8,6 +8,7 @@
 .wrapper-heading {
   font-size: 36px;
   margin-bottom: 20px;
+  color: inherit;
 }
 
 .wrapper-content {
@@ -15,6 +16,7 @@
   max-width: 840px;
   line-height: 20px;
   margin: 0 auto;
+  color: inherit;
 }
 
 .overlay {
