@@ -1,7 +1,33 @@
-Things that I followed to create this React Web app.
+# My Portfolio
 
-Pomodoro: The Pomodoro Technique is a time management method developed by Francesco Cirillo in the late 1980s. The technique uses a timer to break down work into intervals, traditionally 25 minutes in length, separated by short breaks. https://en.wikipedia.org/wiki/Pomodoro_Technique
+## About
 
-MERN STACK Tutorial: https://medium.com/@beaucarnes/learn-the-mern-stack-by-building-an-exercise-tracker-mern-tutorial-59c13c1237a1
+> A webapp that contains a detailed information
+> about me which is developed using React.
+> I have poured all my creative thoughts
+> and all the concepts I know in react into
+> this app. This means it wont be a ideal
+> architecture that a application should have but
+> a place that showcases my knowledge...
 
-Backend Login Authentication: https://blog.bitsrc.io/build-a-login-auth-app-with-mern-stack-part-1-c405048e3669
+This portfolio has two pages for now:
+
+- Project list page - That shows all the projects that I have done so far.
+- Timeline page - Show the timeline or the path that I took to reach the position that I am in right now.
+
+## Tech
+
+The app uses a number of open source projects to work properly:
+
+- [React] - HTML enhanced for web apps!
+- [node.js] - evented I/O for the backend
+- [Express] - fast node.js network app framework [@tjholowaychuk]
+
+```
+.------..------..------.
+|N.--. ||R.--. ||J.--. |
+| :(): || :(): || :(): |
+| ()() || ()() || ()() |
+| '--'N|| '--'R|| '--'J|
+`------'`------'`------'
+```
